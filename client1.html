@@ -32,7 +32,7 @@
         console.log("onConnect");
         // //指定したトピックを購読する
         // client.subscribe("/cloudmqtt");
-        トピックにメッセージを発行する
+        // トピックにメッセージを発行する
         message = new Paho.MQTT.Message("Hello CloudMQTT");
         message.destinationName = "/cloudmqtt";
         client.send(message);
