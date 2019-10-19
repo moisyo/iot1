@@ -31,7 +31,7 @@
       function onConnect() {
         // Once a connection has been made, make a subscription and send a message.
         console.log("onConnect");
-         var es = new EventSource('client2.html');
+         var es = new EventSource('farmer.cloudmqtt.com');
          $("#publish").click(function() {
                 $.post("/cloudmqtt")
             });
