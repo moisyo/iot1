@@ -29,12 +29,14 @@
       function onConnect() {
         // Once a connection has been made, make a subscription and send a message.
         console.log("onConnect");
+        document.getElementById("msg").innerHTML = "購読しました";
         client.subscribe("/cloudmqtt", function() {
           //指定したトピックを購読する
           document.getElementById("msg").innerHTML = "購読しました";
          // when a message arrives, do something with it
         client.on('message', function(topic, message, packet) {
            console.log("Received '" + message + "' on '" + topic + "'");
+           document.getElementById("msg").innerHTML = message;
           });
         });
         //トピックにメッセージを発行する
