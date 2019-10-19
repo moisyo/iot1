@@ -5,7 +5,7 @@
     <title></title>
   </head>
   <body>
-    <h2 id="msg"></h2>
+    <h2 id="message"></h2>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
     <script type="text/javascript">
       // Create a client instance
@@ -27,18 +27,22 @@
 
       // called when the client connects
       function onConnect() {
-        function onConnect() {
-          client.on('connect', function() { // When connected
-
-          // subscribe to a topic
-          client.subscribe('hello/world', function() {
-            // when a message arrives, do something with it
-            client.on('message', function(topic, message, packet) {
-              console.log("Received '" + message + "' on '" + topic + "'");
-            });
+        // Once a connection has been made, make a subscription and send a message.
+        console.log("onConnect");
+        client.subscribe("/cloudmqtt", function() {
+          //指定したトピックを購読する
+          document.getElementById("message").innerHTML = "購読しました";
+         // when a message arrives, do something with it
+        client.on('message', function(topic, message, packet) {
+           console.log("Received '" + message + "' on '" + topic + "'");
           });
         });
-        }
+        //トピックにメッセージを発行する
+        // message = new Paho.MQTT.Message("Hello CloudMQTT");
+        // message.destinationName = "/cloudmqtt";
+        // client.send(message);
+        // document.getElementById("message").innerHTML = "メッセージ発行完了";
+      }
 
       function doFail(e){
         console.log(e);
