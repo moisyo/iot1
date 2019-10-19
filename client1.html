@@ -31,17 +31,13 @@
       function onConnect() {
         // Once a connection has been made, make a subscription and send a message.
         console.log("onConnect");
-         var es = new EventSource('farmer.cloudmqtt.com');
-         $("#publish").click(function() {
-                $.post("/cloudmqtt")
-            });
         // //指定したトピックを購読する
         // client.subscribe("/cloudmqtt");
-        //トピックにメッセージを発行する
-        // message = new Paho.MQTT.Message("Hello CloudMQTT");
-        // message.destinationName = "/cloudmqtt";
-        // client.send(message);
-        // document.getElementById("message").innerHTML = "メッセージ発行完了";
+        トピックにメッセージを発行する
+        message = new Paho.MQTT.Message("Hello CloudMQTT");
+        message.destinationName = "/cloudmqtt";
+        client.send(message);
+        document.getElementById("message").innerHTML = "メッセージ発行完了";
       }
 
       function doFail(e){
