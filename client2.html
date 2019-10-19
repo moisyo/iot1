@@ -31,13 +31,11 @@
       function onConnect() {
         // Once a connection has been made, make a subscription and send a message.
         console.log("onConnect");
+        client.subscribe("/cloudmqtt");
+        //指定したトピックを購読する
         document.getElementById("msg1").innerHTML = "購読しました";
-        client.subscribe("/cloudmqtt", function() {
-         // when a message arrives, do something with it
-         //指定したトピックを購読する
-        client.on('message', function(topic, message, packet) {
+
            // console.log("Received '" + message + "' on '" + topic + "'");
-           document.getElementById("msg3").innerHTML = message;
           });
         });
         //トピックにメッセージを発行する
@@ -61,6 +59,7 @@
       // called when a message arrives
       function onMessageArrived(message) {
         console.log("onMessageArrived:"+message.payloadString);
+        document.getElementById("msg2").innerHTML = message.payloadString;
       }
     </script>
   </body>
