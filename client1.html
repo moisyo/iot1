@@ -26,17 +26,19 @@
       client.connect(options);
 
       // called when the client connects
-      function onConnect() {
+      client.on('connect', function() {
+        //When connected
+        console.log('connected');
         // publish a message to a topic
       client.publish('hello/world', 'my message', function() {
         document.getElementById('msg').innerHTML = "Message is published";
         client.end(); // Close the connection when published
       });
-      }
+    });
 
       function doFail(e){
         console.log(e);
-      }
+      });
 
       // called when the client loses its connection
       function onConnectionLost(responseObject) {
