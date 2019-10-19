@@ -33,11 +33,10 @@
         console.log("onConnect");
         document.getElementById("msg1").innerHTML = "購読しました";
         client.subscribe("/cloudmqtt", function() {
-          //指定したトピックを購読する
-          document.getElementById("msg2").innerHTML = "購読しました";
          // when a message arrives, do something with it
+         //指定したトピックを購読する
         client.on('message', function(topic, message, packet) {
-           console.log("Received '" + message + "' on '" + topic + "'");
+           // console.log("Received '" + message + "' on '" + topic + "'");
            document.getElementById("msg3").innerHTML = message;
           });
         });
