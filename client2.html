@@ -26,15 +26,18 @@
 
       // called when the client connects
       function onConnect() {
-        // Once a connection has been made, make a subscription and send a message.
-        console.log("onConnect");
-        //指定したトピックを購読する
-        client.subscribe("/cloudmqtt");
-        //トピックにメッセージを発行する
-        message = new Paho.MQTT.Message("Hello CloudMQTT");
-        message.destinationName = "/cloudmqtt";
-        client.send(message);
-      }
+        function onConnect() {
+          client.on('connect', function() { // When connected
+
+          // subscribe to a topic
+          client.subscribe('hello/world', function() {
+            // when a message arrives, do something with it
+            client.on('message', function(topic, message, packet) {
+              console.log("Received '" + message + "' on '" + topic + "'");
+            });
+          });
+        });
+        }
 
       function doFail(e){
         console.log(e);
