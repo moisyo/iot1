@@ -5,7 +5,9 @@
     <title></title>
   </head>
   <body>
-    <h2 id="msg"></h2>
+    <h2 id="msg1"></h2>
+    <h2 id="msg2"></h2>
+    <h2 id="msg3"></h2>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
     <script type="text/javascript">
       // Create a client instance
@@ -29,14 +31,14 @@
       function onConnect() {
         // Once a connection has been made, make a subscription and send a message.
         console.log("onConnect");
-        document.getElementById("msg").innerHTML = "購読しました";
+        document.getElementById("msg1").innerHTML = "購読しました";
         client.subscribe("/cloudmqtt", function() {
           //指定したトピックを購読する
-          document.getElementById("msg").innerHTML = "購読しました";
+          document.getElementById("msg2").innerHTML = "購読しました";
          // when a message arrives, do something with it
         client.on('message', function(topic, message, packet) {
            console.log("Received '" + message + "' on '" + topic + "'");
-           document.getElementById("msg").innerHTML = message;
+           document.getElementById("msg3").innerHTML = message;
           });
         });
         //トピックにメッセージを発行する
