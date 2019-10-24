@@ -59,7 +59,7 @@
       function onMessageArrived(message) {
         console.log("onMessageArrived:"+message.payloadString);
 
-        document.getElementById("msg1").innerHTML = message.payloadString;
+        // document.getElementById("msg1").innerHTML = message.payloadString;
         $('#msg3').append("<li>" + message.payloadString + "</li>")
 
 }
