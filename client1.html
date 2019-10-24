@@ -38,8 +38,11 @@
         // client.subscribe("/cloudmqtt");
         // トピックにメッセージを発行する
         $("#publish").click(function() {
-
-        message = new Paho.MQTT.Message();
+        var msg2 ="";
+        function change(){
+          msg2 = document.getElementById('msg1').value;
+        }
+        message = new Paho.MQTT.Message(msg2);
         message.destinationName = "/cloudmqtt";
         client.send(message);
         })
@@ -62,9 +65,7 @@
         console.log("onMessageArrived:"+message.payloadString);
       }
 
-      function change(){
-        document.getElementById('msg1').innerHTML = ;
-      }
+
 
     </script>
   </body>
