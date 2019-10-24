@@ -6,12 +6,10 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   </head>
   <body>
-    <form method="post">
-    <br>
-    <textarea id="msg1" rows="4" cols="40" placeholder="メッセージ記入"></textarea><br>
-    <input id="publish "type="submit" value="publish">
-    </form>
-    <!-- <input id="publish" type="button" value="Publish"> -->
+
+    <input id="msg1" placeholder="メッセージ記入"><br>
+    <input type="button" value="publish" onclick="change();">
+
     <!-- <ul id="message"></ul> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -64,6 +62,9 @@
         console.log("onMessageArrived:"+message.payloadString);
       }
 
+      function change(){
+        document.getElementById('msg1').innerHTML = ;
+      }
 
     </script>
   </body>
