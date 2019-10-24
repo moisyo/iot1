@@ -8,7 +8,7 @@
   <body>
 
     <input id="msg1" placeholder="メッセージ記入"><br>
-    <input type="button" value="publish" onclick="change();">
+    <input type="button" value="publish" id="publish">
 
     <!-- <ul id="message"></ul> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
@@ -38,11 +38,7 @@
         // client.subscribe("/cloudmqtt");
         // トピックにメッセージを発行する
         $("#publish").click(function() {
-        var msg2 ="";
-        function change(){
-          msg2 = document.getElementById('msg1').value;
-        }
-        message = new Paho.MQTT.Message(msg2);
+        message = new Paho.MQTT.Message(document.getElementById('msg1').value);
         message.destinationName = "/cloudmqtt";
         client.send(message);
         })
@@ -66,6 +62,9 @@
       }
 
 
+      // function change(){
+      //   msg2 = document.getElementById('msg1').value;
+      // }
 
     </script>
   </body>
