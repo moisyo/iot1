@@ -64,7 +64,7 @@
                           console.log(json.latitude);
 
                 $("#publish").click(function() {
-                      message = new Paho.MQTT.Message(json);
+                      message = new Paho.MQTT.Message('json');
                       message.destinationName = "/cloudmqtt";
                       client.send(message);
                       })
