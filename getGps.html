@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>getGps</title>
+  </head>
+  <body>
+    <script>
+      if( navigator.geolocation ){
+      	// 現在位置を取得できる場合の処理
+      	alert( "あなたの端末では、現在位置を取得することができます。" ) ;
+      }else{
+    	// 現在位置を取得できない場合の処理
+    	alert( "あなたの端末では、現在位置を取得できません。" ) ;
+    }
+    </script>
+  </body>
+</html>
