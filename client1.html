@@ -61,6 +61,8 @@
                             "date": jsonDate
                           }
 
+                          console.log(json);
+
                 $("#publish").click(function() {
                       message = new Paho.MQTT.Message(json);
                       message.destinationName = "/cloudmqtt";
@@ -111,6 +113,7 @@
 
         // document.getElementById("message").innerHTML = "メッセージ発行完了";
       }
+
       function doFail(e){
         console.log(e);
       }
@@ -121,7 +124,6 @@
           console.log("onConnectionLost:"+responseObject.errorMessage);
         }
       }
-
       // called when a message arrives
       // function onMessageArrived(message) {
       //   console.log("onMessageArrived:"+message.payloadString);
