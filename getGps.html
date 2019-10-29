@@ -6,6 +6,7 @@
   </head>
   <body>
     <h1 id="result"></h1>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
     <script>
       // ユーザーの端末がGeoLocation APIに対応しているかの判定
 
@@ -20,6 +21,12 @@
         		{
               var datetime = new Date();
               var jsonDate = datetime.toLocaleString();
+
+              var beforeDate = moment(jasonDate, "YYYY-MM-DD-LTS"); // 第一引数：日時、第二引数：フォーマット形式
+              var afterDate = beforeDate.format('YYYYMMDD LT');
+
+              console.log(afterDate);
+
         			// 取得したデータの整理
         			var data = position.coords ;
 
