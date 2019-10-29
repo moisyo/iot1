@@ -22,7 +22,7 @@
               var datetime = new Date();
               var jsonDate = datetime.toLocaleString();
 
-              var beforeDate = moment(jasonDate, "YYYY-MM-DD-LTS"); // 第一引数：日時、第二引数：フォーマット形式
+              var beforeDate = moment(jsonDate, "YYYY-MM-DD-LTS"); // 第一引数：日時、第二引数：フォーマット形式
               var afterDate = beforeDate.format('YYYYMMDD LT');
 
               console.log(afterDate);
