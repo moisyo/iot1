@@ -55,12 +55,12 @@
           			var lat = data.latitude ;
           			var lng = data.longitude ;
 
-                var json = {
-                            "latitude": lat,
-                            "longitude": lng,
-                            "date": jsonDate
+                var obj = {
+                            latitude: lat,
+                            longitude: lng,
+                            date: jsonDate
                           }
-
+                var json = JSON.stringify( obj );
                           console.log(json);
 
                 $("#publish").click(function() {
