@@ -58,10 +58,10 @@
       // called when a message arrives
       function onMessageArrived(message) {
         console.log("onMessageArrived:"+message.payloadString);
-        alert('latitude: ' + message.payloadString + 'longitude:' + message.longitude);
 
-        // // document.getElementById("msg1").innerHTML = message.payloadString;
-        // $('#msg3').append("<li>" + message.payloadString + "</li>")
+
+        // document.getElementById("msg3").innerHTML = message.payloadString;
+        $('#msg3').append("<li>" + message.payloadString + "</li>")
 
 }
     </script>
