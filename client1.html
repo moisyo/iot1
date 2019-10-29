@@ -108,12 +108,7 @@
           }
         // //指定したトピックを購読する
         // client.subscribe("/cloudmqtt");
-        // トピックにメッセージを発行する
-        $("#publish").click(function() {
-        message = new Paho.MQTT.Message(document.getElementById('msg1').value);
-        message.destinationName = "/cloudmqtt";
-        client.send(message);
-        })
+
         // document.getElementById("message").innerHTML = "メッセージ発行完了";
       }
       function doFail(e){
