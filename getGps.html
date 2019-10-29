@@ -18,7 +18,8 @@
         		// [第1引数] 取得に成功した場合の関数
         		function( position )
         		{
-              var datetime = new Date().getTime();
+              var datetime = new Date();
+              var jsonDate = datetime.toJson();
         			// 取得したデータの整理
         			var data = position.coords ;
 
@@ -27,7 +28,7 @@
         			var lng = data.longitude ;
 
         			// HTMLへの書き出し
-        			document.getElementById( 'result' ).innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>時間</dt><dd>' + datetime + '</dd></dl>';
+        			document.getElementById( 'result' ).innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>時間</dt><dd>' + jsonDate + '</dd></dl>';
 
         			// 位置情報
         			var latlng = new google.maps.LatLng( lat , lng );
