@@ -25,8 +25,6 @@
               var beforeDate = moment(jsonDate, "YYYY-MM-DD-LTS"); // 第一引数：日時、第二引数：フォーマット形式
               var afterDate = beforeDate.format('YYYYMMDDHHmm');
 
-              console.log(afterDate);
-
         			// 取得したデータの整理
         			var data = position.coords ;
 
@@ -35,7 +33,7 @@
         			var lng = data.longitude ;
 
         			// HTMLへの書き出し
-        			document.getElementById( 'result' ).innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>時間</dt><dd>' + jsonDate + '</dd></dl>';
+        			document.getElementById( 'result' ).innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>時間</dt><dd>' + afterDate + '</dd></dl>';
 
         		},
 
