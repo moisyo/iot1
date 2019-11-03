@@ -46,7 +46,7 @@
         console.log("onMessageArrived:"+message.payloadString);
 
         // document.getElementById("msg3").innerHTML = message.payloadString;
-        $('#map').append("<li>" + message.latitude + "</li>")
+        $('#map').append("<li>" + message[0].latitude + "</li>")
 
 }
     </script>
