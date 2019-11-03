@@ -63,14 +63,20 @@
             position: latlng ,
         } ) ;
 
+         moveMarker( map, marker );
+
     }
     // function mapMaker(){
     //
     // }
     //
-    // function moveMaker(){
-    //
-    // }
+    function moveMarker( map, marker, lat, lng) {
+    //delayed so you can see it move
+    setTimeout( function(){
+        marker.setPosition( new google.maps.LatLng( lat, lng ) );
+        map.panTo( new google.maps.LatLng( lat, lng ) );
+    }, 1500 );
+};
     function initMap(){
       console.log("init");
 
