@@ -27,13 +27,13 @@
       // connect the client
       client.connect(options);
       // called when the client connects
-      function onConnect(callback) {
+      function onConnect() {
         // Once a connection has been made, make a subscription and send a message.
         console.log("onConnect");
-        function sub(){
+        // function sub(){
         client.subscribe("/cloudmqtt");
-        callback();
-      }
+      //   callback();
+      // }
       }
       function doFail(e){
         console.log(e);
@@ -73,8 +73,8 @@
     // }
     function initMap(){
       console.log("init");
-      // var lat = "psg";
-      // console.log(lat);
+      var lat = "psg";
+      console.log(lat);
     }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrwAtdNKikHBI5ceL1W9E-dsNCOVqKq0o&callback=initMap" async defer></script>
