@@ -46,7 +46,7 @@
         console.log("onMessageArrived:"+message.payloadString);
         var data = JSON.parse(message.payloadString);
         // document.getElementById("msg3").innerHTML = message.payloadString;
-        $('#map').append("<li>" + data + "</li>")
+        $('#map').append("<li>" + data.latitude + "</li>")
         console.log(data);
 
 }
