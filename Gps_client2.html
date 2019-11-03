@@ -44,9 +44,9 @@
       // called when a message arrives
       function onMessageArrived(message) {
         console.log("onMessageArrived:"+message.payloadString);
-
+        var data = JSON.parse(message.payloadString);
         // document.getElementById("msg3").innerHTML = message.payloadString;
-        $('#map').append("<li>" + message[0].latitude + "</li>")
+        $('#map').append("<li>" + data[0].latitude + "</li>")
 
 }
     </script>
