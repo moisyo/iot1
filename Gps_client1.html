@@ -48,11 +48,11 @@
                 var json = JSON.stringify( obj );
                           console.log(json);
 
-                $("#publish").click(function() {
+
                       message = new Paho.MQTT.Message(json);
                       message.destinationName = "/cloudmqtt";
                       client.send(message);
-                      })
+                      
           			// // HTMLへの書き出し
           			// document.getElementById( 'result' ).innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>時間</dt><dd>' + afterDate + '</dd></dl>';
           		});
