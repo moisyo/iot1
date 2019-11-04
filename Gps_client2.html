@@ -68,7 +68,7 @@
         marker.setMap( map );
 
          }else {
-           moveMarker(lat, lng, map, marker);
+           moveMarker(latlng, map, marker);
          }
          count++;
        }
@@ -83,7 +83,7 @@
     //   return map;
     // }
 
-    function moveMarker(lat, lng, map, marker) {
+    function moveMarker(latlng, map, marker) {
       // console.log(lat);
       // var latlng = new google.maps.LatLng(lat, lng);
       // var marker = new google.maps.Marker( {
@@ -92,9 +92,9 @@
       // } ) ;
       // marker.setMap(map);
     //delayed so you can see it move
-    setTimeout( function(){
-        marker.setPosition(new google.maps.LatLng(lat, lng));
-        map.panTo(new google.maps.LatLng(lat, lng));
+    setTimeout(function(){
+        marker.setPosition(latlng);
+        map.panTo(latlng);
       },1500);
     };
 
