@@ -63,7 +63,7 @@
         //     position: latlng ,
         // } ) ;
          // marker.setMap( map );
-         moveMarker( map, marker, lat, lng );
+         moveMarker(lat, lng);
 
     }
     function mapMaker(lat, lng, map){
@@ -75,7 +75,7 @@
       } ) ;
     }
 
-    function moveMarker(map, marker, lat, lng) {
+    function moveMarker(lat, lng) {
       console.log(lat);
       var latlng = new google.maps.LatLng(lat, lng);
       var marker = new google.maps.Marker( {
