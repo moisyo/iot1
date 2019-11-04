@@ -52,7 +52,6 @@
         var lat = data.latitude;
         var lng= data.longitude;
 
-        count++;
         // var latlng = new google.maps.LatLng(lat, lng);
         // // Google Mapsに書き出し
         // var map = new google.maps.Map( document.getElementById( 'map' ) , {
@@ -66,10 +65,11 @@
         //     position: latlng ,
         // } ) ;
          // marker.setMap( map );
-         if(count ===0){
+         if(count === 0){
            mapMaker(lat, lng)
          };
          moveMarker(lat, lng, map);
+         count++;
        }
 
     function mapMaker(lat, lng){
@@ -96,6 +96,7 @@
         map.panTo(new google.maps.LatLng(lat, lng));
       },1500);
     };
+
     function initMap(){
       console.log("init");
       // Google Mapsに書き出し
