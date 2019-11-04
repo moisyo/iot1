@@ -52,45 +52,45 @@
         var lat = data.latitude;
         var lng= data.longitude;
 
-        // var latlng = new google.maps.LatLng(lat, lng);
-        // // Google Mapsに書き出し
-        // var map = new google.maps.Map( document.getElementById( 'map' ) , {
-        //     zoom: 9 ,// ズーム値
-        //     center: latlng ,// 中心座標
-        // } ) ;
-        // マーカーの新規出力
+        if(count === 0){
+          
+        var latlng = new google.maps.LatLng(lat, lng);
+        // Google Mapsに書き出し
+        var map = new google.maps.Map( document.getElementById( 'map' ) , {
+            zoom: 9 ,// ズーム値
+            center: latlng ,// 中心座標
+        });
 
-        // var marker = new google.maps.Marker( {
-        //     map: map ,
-        //     position: latlng ,
-        // } ) ;
-         // marker.setMap( map );
-         if(count === 0){
-           mapMaker(lat, lng)
-           moveMarker(lat, lng, map)
-         };
-         moveMarker(lat, lng, map);
+        var marker = new google.maps.Marker({
+            map: map ,
+            position: latlng ,
+        });
+        marker.setMap( map );
+
+         }else {
+           moveMarker(lat, lng, map, marker);
+         }
          count++;
        }
 
-    function mapMaker(lat, lng){
-      var latlng = new google.maps.LatLng(lat, lng);
-      // Google Mapsに書き出し
-      var map = new google.maps.Map( document.getElementById( 'map' ) , {
-          zoom: 9 ,// ズーム値
-          center: latlng ,// 中心座標
-      } ) ;
-      return map;
-    }
+    // function mapMaker(lat, lng){
+    //   var latlng = new google.maps.LatLng(lat, lng);
+    //   // Google Mapsに書き出し
+    //   var map = new google.maps.Map( document.getElementById( 'map' ) , {
+    //       zoom: 9 ,// ズーム値
+    //       center: latlng ,// 中心座標
+    //   } ) ;
+    //   return map;
+    // }
 
     function moveMarker(lat, lng, map) {
-      console.log(lat);
-      var latlng = new google.maps.LatLng(lat, lng);
-      var marker = new google.maps.Marker( {
-          map: map ,
-          position: latlng ,
-      } ) ;
-      marker.setMap(map);
+      // console.log(lat);
+      // var latlng = new google.maps.LatLng(lat, lng);
+      // var marker = new google.maps.Marker( {
+      //     map: map ,
+      //     position: latlng ,
+      // } ) ;
+      // marker.setMap(map);
     //delayed so you can see it move
     setTimeout( function(){
         marker.setPosition(new google.maps.LatLng(lat, lng));
