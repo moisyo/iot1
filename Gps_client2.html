@@ -10,6 +10,10 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
     <script type="text/javascript">
+      var map = new google.maps.Map( document.getElementById( 'map' ) , {
+          zoom: 9,// ズーム値
+          center: new google.maps.LatLng(34.7175486,135.5157768),// 中心座標
+      });
       // Create a client instance
       client = new Paho.MQTT.Client("farmer.cloudmqtt.com", 35292, "web_" + parseInt(Math.random() * 100, 10));
       //Example client = new Paho.MQTT.Client("m11.cloudmqtt.com", 32903, "web_" + parseInt(Math.random() * 100, 10));
@@ -82,20 +86,20 @@
           map: map ,
           position: latlng ,
       } ) ;
-      marker.setMap( map );
+      marker.setMap(map);
     //delayed so you can see it move
     setTimeout( function(){
-        marker.setPosition( new google.maps.LatLng(lat, lng));
-        map.panTo( new google.maps.LatLng(lat, lng));
+        marker.setPosition(new google.maps.LatLng(lat, lng));
+        map.panTo(new google.maps.LatLng(lat, lng));
       },1500);
     };
     function initMap(){
       console.log("init");
       // Google Mapsに書き出し
-      var map = new google.maps.Map( document.getElementById( 'map' ) , {
-          zoom: 9,// ズーム値
-          center: new google.maps.LatLng(34.7175486,135.5157768),// 中心座標
-      } ) ;
+      // var map = new google.maps.Map( document.getElementById( 'map' ) , {
+      //     zoom: 9,// ズーム値
+      //     center: new google.maps.LatLng(34.7175486,135.5157768),// 中心座標
+      // } ) ;
     }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrwAtdNKikHBI5ceL1W9E-dsNCOVqKq0o&callback=initMap" async defer></script>
