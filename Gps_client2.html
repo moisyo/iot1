@@ -53,7 +53,7 @@
         var lng= data.longitude;
 
         if(count === 0){
-          
+
         var latlng = new google.maps.LatLng(lat, lng);
         // Google Mapsに書き出し
         var map = new google.maps.Map( document.getElementById( 'map' ) , {
@@ -83,7 +83,7 @@
     //   return map;
     // }
 
-    function moveMarker(lat, lng, map) {
+    function moveMarker(lat, lng, map, marker) {
       // console.log(lat);
       // var latlng = new google.maps.LatLng(lat, lng);
       // var marker = new google.maps.Marker( {
