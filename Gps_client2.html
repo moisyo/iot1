@@ -13,6 +13,7 @@
       var count = 0;
       var latlng;
       var marker;
+      var map;
       // Create a client instance
       client = new Paho.MQTT.Client("farmer.cloudmqtt.com", 35292, "web_" + parseInt(Math.random() * 100, 10));
       //Example client = new Paho.MQTT.Client("m11.cloudmqtt.com", 32903, "web_" + parseInt(Math.random() * 100, 10));
@@ -33,14 +34,12 @@
       function onConnect() {
         // Once a connection has been made, make a subscription and send a message.
         console.log("onConnect");
-        var map = new google.maps.Map(document.getElementById('map'),{
+        map = new google.maps.Map(document.getElementById('map'),{
           zoom: 9,// ズーム値
           center: new google.maps.LatLng(34.674474,135.612067),// 中心座標
         });
-        // function sub(){
         client.subscribe("/cloudmqtt");
-      //   callback();
-      // }
+        markerMaker(lat, lng, map)
       }
       function doFail(e){
         console.log(e);
@@ -60,7 +59,7 @@
 
         if(count === 0){
 
-        latlng = new google.maps.LatLng(lat, lng);
+        // latlng = new google.maps.LatLng(lat, lng);
         // Google Mapsに書き出し
         // map = new google.maps.Map(document.getElementById('map'),{
         //     zoom: 9,// ズーム値
@@ -68,7 +67,6 @@
         // });
         console.log(count);
         count++;
-        markerMaker(lat, lng, map)
         // console.log(marker);
         }
            moveMarker(lat, lng, map, marker);
