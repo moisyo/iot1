@@ -12,10 +12,6 @@
     <script type="text/javascript">
       var count = 0;
       var latlng;
-      var map = new google.maps.Map(document.getElementById('map'),{
-          zoom: 9,// ズーム値
-          center: new google.maps.LatLng(34.674474,135.612067),// 中心座標
-      });
       var marker;
       // Create a client instance
       client = new Paho.MQTT.Client("farmer.cloudmqtt.com", 35292, "web_" + parseInt(Math.random() * 100, 10));
@@ -34,10 +30,13 @@
       // connect the client
       client.connect(options);
       // called when the client connects
+      var map = new google.maps.Map(document.getElementById('map'),{
+        zoom: 9,// ズーム値
+        center: new google.maps.LatLng(34.674474,135.612067),// 中心座標
+      });
       function onConnect() {
         // Once a connection has been made, make a subscription and send a message.
         console.log("onConnect");
-        markerMaker(lat, lng, map)
         // function sub(){
         client.subscribe("/cloudmqtt");
       //   callback();
