@@ -54,7 +54,8 @@
         var lng= data.longitude;
 
         if(count === 0){
-
+        var map2 = outputMap();
+        markerMaker(lat, lng, map2);
         // latlng = new google.maps.LatLng(lat, lng);
         // Google Mapsに書き出し
         // map = new google.maps.Map(document.getElementById('map'),{
@@ -65,7 +66,7 @@
         count++;
         // console.log(marker);
         }
-           moveMarker(lat, lng, map, marker);
+           moveMarker(lat, lng, map2, marker);
            console.log(marker);
            console.log(count);
            console.log(lat);
