@@ -30,13 +30,13 @@
       // connect the client
       client.connect(options);
       // called when the client connects
-      var map = new google.maps.Map(document.getElementById('map'),{
-        zoom: 9,// ズーム値
-        center: new google.maps.LatLng(34.674474,135.612067),// 中心座標
-      });
       function onConnect() {
         // Once a connection has been made, make a subscription and send a message.
         console.log("onConnect");
+        var map = new google.maps.Map(document.getElementById('map'),{
+          zoom: 9,// ズーム値
+          center: new google.maps.LatLng(34.674474,135.612067),// 中心座標
+        });
         // function sub(){
         client.subscribe("/cloudmqtt");
       //   callback();
