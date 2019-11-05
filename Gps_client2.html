@@ -59,7 +59,7 @@
             map: map2,
             position: new google.maps.LatLng( lat, lng ) ,
         });
-        marker.setMap(map);
+        marker.setMap(map2);
         // latlng = new google.maps.LatLng(lat, lng);
         // Google Mapsに書き出し
         // map = new google.maps.Map(document.getElementById('map'),{
@@ -81,11 +81,11 @@
            zoom: 9,// ズーム値
            center: new google.maps.LatLng(34.674474,135.612067),// 中心座標
          });
-         return map
+         return map;
        };
 
        function outputMap(){
-         var map1 = mapMaker();
+         var map1 = map;
          return map1;
        };
 
@@ -109,7 +109,7 @@
 
     function initMap(){
       console.log("init");
-      // Google Mapsに書き出し
+      gi Google Mapsに書き出し
       mapMaker();
       // var map = new google.maps.Map(document.getElementById('map'),{
       //     zoom: 9,// ズーム値
