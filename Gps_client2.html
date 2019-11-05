@@ -12,7 +12,10 @@
     <script type="text/javascript">
       var count = 0;
       var latlng;
-      var map;
+      var map = new google.maps.Map(document.getElementById('map'),{
+          zoom: 9,// ズーム値
+          center: new google.maps.LatLng(34.674474,135.612067),// 中心座標
+      });
       var marker;
       // Create a client instance
       client = new Paho.MQTT.Client("farmer.cloudmqtt.com", 35292, "web_" + parseInt(Math.random() * 100, 10));
@@ -34,6 +37,7 @@
       function onConnect() {
         // Once a connection has been made, make a subscription and send a message.
         console.log("onConnect");
+        markerMaker(lat, lng, map)
         // function sub(){
         client.subscribe("/cloudmqtt");
       //   callback();
@@ -59,18 +63,13 @@
 
         latlng = new google.maps.LatLng(lat, lng);
         // Google Mapsに書き出し
-        map = new google.maps.Map(document.getElementById('map'),{
-            zoom: 9 ,// ズーム値
-            center: latlng ,// 中心座標
-        });
-
-        marker = new google.maps.Marker({
-            map: map ,
-            position: latlng ,
-        });
-        marker.setMap( map );
+        // map = new google.maps.Map(document.getElementById('map'),{
+        //     zoom: 9,// ズーム値
+        //     center: latlng,// 中心座標
+        // });
         console.log(count);
         count++;
+        markerMaker(lat, lng, map)
         // console.log(marker);
         }
            moveMarker(lat, lng, map, marker);
@@ -79,15 +78,13 @@
            console.log(lat);
        }
 
-    // function mapMaker(lat, lng){
-    //   var latlng = new google.maps.LatLng(lat, lng);
-    //   // Google Mapsに書き出し
-    //   var map = new google.maps.Map( document.getElementById( 'map' ) , {
-    //       zoom: 9 ,// ズーム値
-    //       center: latlng ,// 中心座標
-    //   } ) ;
-    //   return map;
-    // }
+    function markerMaker(lat, lng, map){
+      marker = new google.maps.Marker({
+          map: map ,
+          position: new google.maps.LatLng( lat, lng ) ,
+      });
+      marker.setMap(map);
+    }
 
     function moveMarker(lat, lng, map, marker) {
       // console.log(lat);
@@ -100,18 +97,18 @@
       console.log(lat);
     //delayed so you can see it move
     setTimeout(function(){
-        marker.setPosition( new google.maps.LatLng( lat, lng ));
-        map.panTo( new google.maps.LatLng( lat, lng ));
+        marker.setPosition(new google.maps.LatLng( lat, lng ));
+        map.panTo(new google.maps.LatLng( lat, lng ));
       },150);
     };
 
     function initMap(){
       console.log("init");
       // Google Mapsに書き出し
-      var map = new google.maps.Map(document.getElementById('map'),{
-          zoom: 9,// ズーム値
-          center: new google.maps.LatLng(34.674474,135.612067),// 中心座標
-      });
+      // var map = new google.maps.Map(document.getElementById('map'),{
+      //     zoom: 9,// ズーム値
+      //     center: new google.maps.LatLng(34.674474,135.612067),// 中心座標
+      // });
 
     }
     </script>
