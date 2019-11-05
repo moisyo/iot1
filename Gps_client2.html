@@ -34,12 +34,8 @@
       function onConnect() {
         // Once a connection has been made, make a subscription and send a message.
         console.log("onConnect");
-        map = new google.maps.Map(document.getElementById('map'),{
-          zoom: 9,// ズーム値
-          center: new google.maps.LatLng(34.674474,135.612067),// 中心座標
-        });
+
         client.subscribe("/cloudmqtt");
-        markerMaker(lat, lng, map)
       }
       function doFail(e){
         console.log(e);
@@ -75,6 +71,19 @@
            console.log(lat);
        }
 
+       function mapMaker(){
+         map = new google.maps.Map(document.getElementById('map'),{
+           zoom: 9,// ズーム値
+           center: new google.maps.LatLng(34.674474,135.612067),// 中心座標
+         });
+         return map
+       };
+
+       function outputMap(){
+         var map1 = mapMaker();
+         return map1;
+       };
+
     function markerMaker(lat, lng, map){
       marker = new google.maps.Marker({
           map: map ,
@@ -84,13 +93,7 @@
     }
 
     function moveMarker(lat, lng, map, marker) {
-      // console.log(lat);
-      // var latlng = new google.maps.LatLng(lat, lng);
-      // var marker = new google.maps.Marker( {
-      //     map: map ,
-      //     position: latlng ,
-      // } ) ;
-      // marker.setMap(map);
+
       console.log(lat);
     //delayed so you can see it move
     setTimeout(function(){
@@ -102,12 +105,13 @@
     function initMap(){
       console.log("init");
       // Google Mapsに書き出し
+      mapMaker();
       // var map = new google.maps.Map(document.getElementById('map'),{
       //     zoom: 9,// ズーム値
       //     center: new google.maps.LatLng(34.674474,135.612067),// 中心座標
       // });
-
     }
+
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrwAtdNKikHBI5ceL1W9E-dsNCOVqKq0o&callback=initMap" async defer></script>
   </body>
