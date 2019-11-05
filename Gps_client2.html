@@ -60,6 +60,7 @@
             position: new google.maps.LatLng( lat, lng ) ,
         });
         marker.setMap(map2);
+        map2.panTo(marker.getPosition());
         // latlng = new google.maps.LatLng(lat, lng);
         // Google Mapsに書き出し
         // map = new google.maps.Map(document.getElementById('map'),{
@@ -104,7 +105,7 @@
     setTimeout(function(){
         marker.setPosition(new google.maps.LatLng( lat, lng ));
         marker.addListener("position_changed", function(){
-        map2.panTo(marker.getPosition());	
+        map2.panTo(marker.getPosition());
         });
       },150);
     };
