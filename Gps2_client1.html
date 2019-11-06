@@ -5,7 +5,7 @@
     <title></title>
   </head>
   <body>
-    GPS自動取得
+    GPS2自動取得
     <h1 id="result"></h1>
     <!-- <ul id="message"></ul> -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -52,7 +52,7 @@
           message = new Paho.MQTT.Message(json);
           message.destinationName = "/cloudmqtt";
           client.send(message);
-          
+
           repeat();
           function repeat(){
             //1000ミリ秒（1秒）毎に関数「showNowDate()」を呼び出す
