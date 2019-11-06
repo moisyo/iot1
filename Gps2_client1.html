@@ -31,11 +31,10 @@
       // called when the client connects
       function onConnect() {
         console.log("onConnect");
-        repeat();
-        function repeat(){
-          //1000ミリ秒（1秒）毎に関数「showNowDate()」を呼び出す
-          setInterval("getLocation()", 2000);
-        }
+        (function loop() {
+          getLocation();
+          setTimeout(loop,1000);
+        })();
         // Once a connection has been made, make a subscription and send a message.
         var x = document.getElementById("result");
         function getLocation() {
