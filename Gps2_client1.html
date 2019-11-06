@@ -5,7 +5,7 @@
     <title></title>
   </head>
   <body>
-    ai
+    GPS自動取得
     <h1 id="result"></h1>
     <!-- <ul id="message"></ul> -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -31,11 +31,6 @@
       // called when the client connects
       function onConnect() {
         console.log("onConnect");
-        repeat();
-        function repeat(){
-        //1000ミリ秒（1秒）毎に関数「showNowDate()」を呼び出す
-        setInterval("getLocation()", 2000);
-        }
         // Once a connection has been made, make a subscription and send a message.
         var x = document.getElementById("result");
         function getLocation() {
@@ -57,6 +52,12 @@
           message = new Paho.MQTT.Message(json);
           message.destinationName = "/cloudmqtt";
           client.send(message);
+          
+          repeat();
+          function repeat(){
+            //1000ミリ秒（1秒）毎に関数「showNowDate()」を呼び出す
+            setInterval("getLocation()", 2000);
+          }
         }
 
 
