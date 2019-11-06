@@ -31,6 +31,7 @@
       // called when the client connects
       function onConnect() {
         console.log("onConnect");
+        getLocation();
         // Once a connection has been made, make a subscription and send a message.
         var x = document.getElementById("result");
         function getLocation() {
