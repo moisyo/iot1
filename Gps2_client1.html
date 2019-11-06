@@ -31,7 +31,8 @@
       // called when the client connects
       function onConnect() {
         console.log("onConnect");
-        function(){
+        repeat();
+        function repeat(){
         //1000ミリ秒（1秒）毎に関数「showNowDate()」を呼び出す
         setInterval("getLocation()", 2000);
         }
