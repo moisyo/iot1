@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1 id="result"></h1>
+    <!-- <ul id="message"></ul> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      // Create a client instance
+      client = new Paho.MQTT.Client("farmer.cloudmqtt.com", 35292, "web_" + parseInt(Math.random() * 100, 10));
+      //Example client = new Paho.MQTT.Client("m11.cloudmqtt.com", 32903, "web_" + parseInt(Math.random() * 100, 10));
+
+      // set callback handlers
+      client.onConnectionLost = onConnectionLost;
+      // client.onMessageArrived = onMessageArrived;
+      var options = {
+        useSSL: true,
+        userName: "tupxuvkm",
+        password: "duVDnWjUH7Q-",
+        onSuccess:onConnect,
+        onFailure:doFail
+      }
+      // connect the client
+      client.connect(options);
+
+      // called when the client connects
+      function onConnect() {
+        // Once a connection has been made, make a subscription and send a message.
+        var x = document.getElementById("result");
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(showPosition);
+          } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+          }
+        }
+        function showPosition(position) {
+          x.innerHTML = "success";
+          var obj = {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          }
+          var json = JSON.stringify( obj );
+          console.log(json);
+
+          message = new Paho.MQTT.Message(json);
+          message.destinationName = "/cloudmqtt";
+          client.send(message);
+        }
+
+
+      }
+      function doFail(e){
+        console.log(e);
+      }
+      // called when the client loses its connection
+      function onConnectionLost(responseObject) {
+        if (responseObject.errorCode !== 0) {
+          console.log("onConnectionLost:"+responseObject.errorMessage);
+        }
+      }
+
+    </script>
+  </body>
+</html>
