@@ -33,36 +33,36 @@
         console.log("onConnect");
         // function loop() {
         window.onload = function() {
-  var startPos;
-  var geoOptions = {
-    maximumAge: 5 * 60 * 1000,
-  }
+        var startPos;
+        var geoOptions = {
+          maximumAge: 5 * 60 * 1000,
+        }
+        var x = document.getElementById("result");
+        var geoSuccess = function(position) {
+          // startPos = position;
+          x.innerHTML = "success";
+          var obj = {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          }
+          var json = JSON.stringify( obj );
+          console.log(json);
 
-  var geoSuccess = function(position) {
-    // startPos = position;
-    x.innerHTML = "success";
-    var obj = {
-      latitude: position.coords.latitude,
-      longitude: position.coords.longitude,
-    }
-    var json = JSON.stringify( obj );
-    console.log(json);
+          message = new Paho.MQTT.Message(json);
+          message.destinationName = "/cloudmqtt";
+          client.send(message);
+        };
 
-    message = new Paho.MQTT.Message(json);
-    message.destinationName = "/cloudmqtt";
-    client.send(message);
-  };
-  var geoError = function(error) {
-    console.log('Error occurred. Error code: ' + error.code);
-    // error.code can be:
-    //   0: unknown error
-    //   1: permission denied
-    //   2: position unavailable (error response from location provider)
-    //   3: timed out
-  };
-
-  navigator.geolocation.watchPosition(geoSuccess, geoError, geoOptions);
-};
+        var geoError = function(error) {
+          console.log('Error occurred. Error code: ' + error.code);
+          // error.code can be:
+          //   0: unknown error
+          //   1: permission denied
+          //   2: position unavailable (error response from location provider)
+          //   3: timed out
+        };
+        navigator.geolocation.watchPosition(geoSuccess, geoError, geoOptions);
+      };
       }
       function doFail(e){
         console.log(e);
