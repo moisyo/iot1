@@ -40,6 +40,7 @@
         function getLocation() {
           if (navigator.geolocation) {
             navigator.geolocation.watchPosition(showPosition);
+            console.log(position.coords.latitude);
           } else {
             x.innerHTML = "Geolocation is not supported by this browser.";
           }
