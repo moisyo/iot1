@@ -14,6 +14,7 @@
       var marker;
       var map;
       // Create a client instance
+      var map2 = outputMap();
       client = new Paho.MQTT.Client("farmer.cloudmqtt.com", 35292, "web_" + parseInt(Math.random() * 100, 10));
       //Example client = new Paho.MQTT.Client("m11.cloudmqtt.com", 32903, "web_" + parseInt(Math.random() * 100, 10));
 
@@ -53,7 +54,6 @@
         var lng= data.longitude;
 
         if(count === 0){
-        var map2 = outputMap();
         console.log(map2);
         marker = new google.maps.Marker({
             map: map2,
