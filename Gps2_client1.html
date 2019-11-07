@@ -31,10 +31,10 @@
       // called when the client connects
       function onConnect() {
         console.log("onConnect");
-        // function loop() {
+        function loop() {
           getLocation();
-        // };
-        // setInterval(loop, 3000);
+        };
+        setInterval(loop, 1000);
         // Once a connection has been made, make a subscription and send a message.
         var x = document.getElementById("result");
         function getLocation() {
